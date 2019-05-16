@@ -8,7 +8,6 @@ const ThingsService = {
       .select(
         'thg.id',
         'thg.title',
-        'thg.date_created',
         'thg.content',
         'thg.image',
         ...userFields,
@@ -45,7 +44,6 @@ const ThingsService = {
         'rev.id',
         'rev.rating',
         'rev.text',
-        'rev.date_created',
         ...userFields,
       )
       .where('rev.thing_id', thing_id)
@@ -73,7 +71,6 @@ const ThingsService = {
       id: thingData.id,
       title: xss(thingData.title),
       content: xss(thingData.content),
-      date_created: thingData.date_created,
       image: thingData.image,
       user: thingData.user || {},
       number_of_reviews: Number(thingData.number_of_reviews) || 0,
@@ -99,7 +96,6 @@ const ThingsService = {
       thing_id: reviewData.thing_id,
       text: xss(reviewData.text),
       user: reviewData.user || {},
-      date_created: reviewData.date_created,
     }
   },
 }
@@ -109,8 +105,6 @@ const userFields = [
   'usr.user_name AS user:user_name',
   'usr.full_name AS user:full_name',
   'usr.nickname AS user:nickname',
-  'usr.date_created AS user:date_created',
-  'usr.date_modified AS user:date_modified',
 ]
 
 module.exports = ThingsService
